@@ -26,7 +26,7 @@
                 <li><a href="#skills">Skills</a></li>
                 <li><a href="#services">Services</a></li>
                 <li><a href="#projects">Projects</a></li>
-                <li><a href="#contact" class="nav-btn">Contact Me</a></li>
+                <li><a href="#contact">Contact Me</a></li>
             </ul>
             <div class="hamburger" onclick="toggleNav()">
                 <i class="fas fa-bars"></i>
@@ -76,7 +76,7 @@
                 </div>
                 <div class="about-content">
                     <div class="about-text">
-                        <p class="lead-text">Hello, I’m Althea Rose R. Lopez, a 22-year-old aspiring Virtual Assistant
+                        <p class="lead-text">Hello, I’m Althea Rose R. Lopez, a 23-year-old aspiring Virtual Assistant
                             with hands-on experience in Content Creation, Administrative Support, and Customer Service.
                         </p>
                         <p>Most recently, I worked as a Social Media Manager for Charlotte Business Owners, where I
@@ -286,7 +286,7 @@
                     <div class="modal-content-box">
                         <span class="close-modal" onclick="toggleEmailForm()" title="Close">&times;</span>
                         <h3 class="form-title">Send me an email</h3>
-                        <form action="https://formsubmit.co/phyresquijada@gmail.com" method="POST" class="email-form">
+                        <form action="https://formsubmit.co/arrlopez02515@usep.edu.ph" method="POST" class="email-form">
                             <input type="hidden" name="_subject" value="New message from Portfolio Web!">
                             <input type="hidden" name="_captcha" value="false">
                             <div class="form-grid">
@@ -472,17 +472,17 @@
         const closeBtn = document.querySelector(".close-image-modal");
 
         document.querySelectorAll('.project-image-placeholder img').forEach(img => {
-            img.addEventListener('click', function() {
+            img.addEventListener('click', function () {
                 modal.classList.add('active');
                 modalImg.src = this.src;
             });
         });
 
-        closeBtn.addEventListener('click', function() {
+        closeBtn.addEventListener('click', function () {
             modal.classList.remove('active');
         });
 
-        modal.addEventListener('click', function(e) {
+        modal.addEventListener('click', function (e) {
             // Close modal if user clicks outside the image
             if (e.target === modal) {
                 modal.classList.remove('active');
@@ -508,6 +508,30 @@
         window.addEventListener("scroll", reveal);
         // Delay initial call slightly to ensure initial layout is rendered
         setTimeout(reveal, 100);
+
+        // Active Navigation Link on Scroll and Click
+        const sections = document.querySelectorAll("section");
+        const navLi = document.querySelectorAll(".nav-links li a");
+
+        function highlightNav() {
+            let current = "";
+            sections.forEach((section) => {
+                const sectionTop = section.offsetTop;
+                if (pageYOffset >= sectionTop - 200) {
+                    current = section.getAttribute("id");
+                }
+            });
+
+            navLi.forEach((a) => {
+                a.classList.remove("active");
+                if (a.getAttribute("href") === `#${current}`) {
+                    a.classList.add("active");
+                }
+            });
+        }
+
+        window.addEventListener("scroll", highlightNav);
+        highlightNav(); // Call immediately
     </script>
 </body>
 
